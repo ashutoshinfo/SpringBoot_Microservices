@@ -1,5 +1,6 @@
 package info.ashutosh;
 
+import java.util.Date;
 import java.util.Timer;
 
 import info.ashutosh.job.Task1;
@@ -17,6 +18,6 @@ public class App {
 		timer.schedule(new Task1(), 3000, 2000);
 
 		Timer timer2 = new Timer();
-		timer2.schedule(new Task2(), 3000, 2000);
+		timer2.schedule(new Task2(), new Date(122, 10, 26, 19, 14, 0), 2000);
 	}
 }
