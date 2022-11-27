@@ -10,6 +10,6 @@ public class Cron_Expresion {
 	public void work() {
 		// task execution logic
 		System.out.println("Cron_Expresion.work()");
-		// Local 0 1
+		// Local 1 00
 	}
 }
