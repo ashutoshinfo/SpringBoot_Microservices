@@ -1,10 +1,12 @@
-package info.ashutosh;
+package info.ashutosh.processer;
 
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.stereotype.Component;
 
-public class BookItemrocesser implements ItemProcessor<String, String> {
+@Component
+public class BookItemProcesser implements ItemProcessor<String, String> {
 
-	public BookItemrocesser() {
+	public BookItemProcesser() {
 		System.out.println("BookItemrocesser.BookItemrocesser()");
 	}
 

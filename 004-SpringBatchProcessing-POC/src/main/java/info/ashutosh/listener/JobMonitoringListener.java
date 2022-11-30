@@ -4,7 +4,9 @@ import java.util.Date;
 
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JobMonitoringListener implements JobExecutionListener {
 
 	private long start, end;
