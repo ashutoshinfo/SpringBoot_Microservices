@@ -8,7 +8,7 @@ public class Cron_Expresion {
 
 	// * - any/ all/ every
 	// / - To specify Period of Time
-	// , - To specify the Posible list of value
+	// , - To specify the Possible list of value
 	// - - To specify range of values
 	// ? - any (can be used only in date and week day when month is secified)
 	// L - To specify last days info (can be used only in Date and weeks day fields)
