@@ -18,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 
 import info.ashutosh.listener.JobMonitoringListener;
 import info.ashutosh.model.Employee;
@@ -89,13 +91,20 @@ public class BatchConfig {
 	@Bean(name = "step1")
 	Step step_1() {
 		return stepBuilderFactory.get("step1").<Employee, Employee>chunk(5).reader(createFlatFileItemReader())
-				.processor(eployeeInfoItemProcessor).writer(batchItemWriter()).build();
+				.processor(eployeeInfoItemProcessor).writer(batchItemWriter()).taskExecutor(taskExecutor()).build();
 	}
 
 	@Bean(name = "job1")
 	Job job_1() {
 		return jobBuilderFactory.get("job1").listener(jobMonitoringListener).incrementer(new RunIdIncrementer())
 				.start(step_1()).build();
+	}
+
+	@Bean
+	TaskExecutor taskExecutor() {
+		SimpleAsyncTaskExecutor simpleAsyncTaskExecutor = new SimpleAsyncTaskExecutor();
+		simpleAsyncTaskExecutor.setConcurrencyLimit(10);
+		return simpleAsyncTaskExecutor;
 	}
 
 }
